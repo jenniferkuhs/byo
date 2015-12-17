@@ -7,4 +7,12 @@ class User < ActiveRecord::Base
 has_many :events
 has_many :locations
 
+class Events < ActiveRecord::Base
+   extend FriendlyId
+   friendly_id :sluggable, use: [:slugged, :finders]
+
+   def sluggable
+     event.name + " "
+ 	end
+end
 end
